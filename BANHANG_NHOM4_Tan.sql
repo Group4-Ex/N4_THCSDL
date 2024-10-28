@@ -350,16 +350,16 @@ VALUES
 -- Bảng KHACHHANG
 INSERT INTO KHACHHANG (MAKHACHHANG, TENCONGTY, TENGIAODICH, MAPX, SONHATENDUONG, EMAIL, DIENTHOAI, FAX) 
 VALUES
-	('KH001', N'Siêu thị Big C', N'Big C', 'PX001', N'123 Lê Lợi', 'bigc@email.com', '0123456789', '0123456790'),
-	('KH002', N'Siêu thị CoopMart', N'CoopMart', 'PX002', N'456 Nguyễn Huệ', 'coopmart@email.com', '0234567890', '0234567891'),
+	('KH001', N'Công ty CP Masan Consumer', 'Masan', 'PX001', N'123 Lê Lợi', 'bigc@email.com', '0123456789', '0123456790'),
+	('KH002', N'Công ty TNHH Coca-Cola VN', N'Coca-Cola', 'PX002', N'456 Nguyễn Huệ', 'coopmart@email.com', '0234567890', '0234567891'),
 	('KH003', N'Cửa hàng Bách Hóa Xanh', N'BHX', 'PX003', N'789 Lê Lai', 'bhx@email.com', '0345678901', '0345678902'),
 	('KH004', N'Siêu thị Vinmart', N'Vinmart', 'PX004', N'321 Phan Chu Trinh', 'vinmart@email.com', '0456789012', '0456789013'),
-	('KH005', N'Cửa hàng Tiện Lợi 7-Eleven', N'7-Eleven', 'PX005', N'654 Trần Hưng Đạo', 'sveleven@email.com', '0567890123', '0567890124'),
+	('KH005', DEFAULT, N'Lê Ngọc Tân', 'PX005', N'654 Trần Hưng Đạo', 'sveleven@email.com', '0567890123', '0567890124'),
 	('KH006', DEFAULT, N'Nguyễn Văn An', 'PX006', N'987 Lê Duẩn', 'nguyenvana@email.com', '0678901234', '0678901235'),
 	('KH007', DEFAULT, N'Trần Thị Bình', 'PX007', N'147 Nguyễn Du', 'tranthib@email.com', '0789012345', '0789012346'),
 	('KH008', N'Circle K', N'Circle K', 'PX008', N'258 Hai Bà Trưng', 'circlek@email.com', '0890123456', '0890123457'),
 	('KH009', N'Ministop', N'Ministop', 'PX009', N'369 Lý Tự Trọng', 'ministop@email.com', '0901234567', '0901234568'),
-	('KH010', N'Family Mart', N'Family Mart', 'PX010', N'159 Nam Kỳ Khởi Nghĩa', 'familymart@email.com', '0912345678', '0912345679');
+	('KH010', N'Công ty CP Acecook Việt Nam', N'Acecook', 'PX010', N'159 Nam Kỳ Khởi Nghĩa', 'familymart@email.com', '0912345678', '0912345679');
 
 -- Bảng NHANVIEN
 INSERT INTO NHANVIEN (MANHANVIEN, HO, TEN, NGAYSINH, NGAYLAMVIEC, DIACHI, DIENTHOAI, LUONGCOBAN, PHUCAP) 
@@ -376,19 +376,18 @@ VALUES
 	('NV010', N'Đỗ', N'Minh', '28-06-1992', '15-05-2017', N'147 Long Biên', '0912912912', 12500000, 1600000);
 
 -- Bảng DONDATHANG
-INSERT INTO DONDATHANG (SOHOADON, MAKHACHHANG, MANHANVIEN, NGAYDATHANG, NGAYGIAOHANG, NGAYCHUYENHANG, MAPX, DIACHICUTHE) 
+INSERT INTO DONDATHANG (SOHOADON, MAKHACHHANG, MANHANVIEN, NGAYDATHANG, NGAYCHUYENHANG, NGAYGIAOHANG, MAPX, DIACHICUTHE) 
 VALUES
-	('HD001', 'KH001', 'NV001', GETDATE() + 2, GETDATE() + 1, 'PX001', N'123 Lê Lợi'),
-	('HD002', 'KH002', 'NV002', GETDATE() + 4, GETDATE() + 2, 'PX002', N'117 Nguyễn Huệ'),
-	('HD003', 'KH003', 'NV003', GETDATE() + 3, GETDATE() + 1, 'PX003', N'789 Lê Lai'),
-	('HD004', 'KH004', 'NV004', GETDATE() + 5, GETDATE() + 3, 'PX004', N'321 Phan Chu Trinh'),
-	('HD005', 'KH005', 'NV005', GETDATE() + 5, GETDATE() + 2, 'PX005', N'654 Trần Hưng Đạo'),
-	('HD006', 'KH006', 'NV006', GETDATE() + 6, GETDATE() + 3, 'PX006', N'12 Lê Thánh Tông'),
-	('HD007', 'KH007', 'NV007', GETDATE() + 4, GETDATE() + 1, 'PX007', N'23 Bùi Viện'),
-	('HD008', 'KH008', 'NV008', GETDATE() + 5, GETDATE() + 2, 'PX008', N'45 Nguyễn Văn Trỗi'),
-	('HD009', 'KH009', 'NV009', GETDATE() + 6, GETDATE() + 3, 'PX009', N'678 Lê Văn Sỹ'),
-	('HD010', 'KH010', 'NV010', GETDATE() + 3, GETDATE() + 1, 'PX010', N'91 Cách Mạng Tháng 8');
-
+    ('HD001', 'KH001', 'NV001', '15-01-2022', '17-01-2022', '20-01-2022', 'PX001', N'123 Lê Lợi'),
+    ('HD002', 'KH002', 'NV002', '10-02-2022', '11-02-2022', '15-02-2022', 'PX002', N'117 Nguyễn Huệ'),
+    ('HD003', 'KH003', 'NV003', '05-03-2023', '06-03-2023', '10-03-2023', 'PX003', N'789 Lê Lai'),
+    ('HD004', 'KH004', 'NV004', '20-04-2022', '22-04-2022', '25-04-2022', 'PX004', N'321 Phan Chu Trinh'),
+    ('HD005', 'KH005', 'NV005', '15-05-2023', '16-05-2023', '20-05-2023', 'PX005', N'654 Trần Hưng Đạo'),
+    ('HD006', 'KH006', 'NV006', '10-06-2022', '12-06-2022', '15-06-2022', 'PX006', N'12 Lê Thánh Tông'),
+    ('HD007', 'KH007', 'NV007', '25-07-2023', '26-07-2023', '30-07-2023', 'PX007', N'23 Bùi Viện'),
+    ('HD008', 'KH008', 'NV008', '15-08-2022', '17-08-2022', '20-08-2022', 'PX008', N'45 Nguyễn Văn Trỗi'),
+    ('HD009', 'KH009', 'NV009', '10-09-2023', '12-09-2023', '15-09-2023', 'PX009', N'678 Lê Văn Sỹ'),
+    ('HD010', 'KH010', 'NV010', '05-10-2022', '06-10-2022', '10-10-2022', 'PX010', N'91 Cách Mạng Tháng 8');
 
 -- Bảng CHITIETDATHANG
 INSERT INTO CHITIETDATHANG (SOHOADON, MAHANG, GIABAN, SOLUONG, MUCGIAMGIA) 
