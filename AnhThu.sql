@@ -281,14 +281,14 @@ VALUES
 --Nhập dữ liệu Nhà cung cấp
 INSERT INTO NHACUNGCAP (MACONGTY, TENCONGTY, TENGIAODICH, MAPX, SONHATENDUONG, DIENTHOAI, FAX, EMAIL)
 VALUES 
-('NCC001', N'Công ty TNHH Dược Phẩm Việt Mỹ', N'VietMy Pharma', 'PX001', N'123 Lê Lợi', '0987654321', '0283765432', 'vietmy@vietmypharma.com'),
+('NCC001',  N'Công ty CP Quốc Tế ABC', N'ABC International', 'PX001', N'123 Lê Lợi', '0987654321', '0283765432', 'vietmy@vietmypharma.com'),
 ('NCC002', N'Công ty CP Mỹ Phẩm Thiên Nhiên', N'ThienNhien Cosmetics', 'PX002', N'456 Hai Bà Trưng', '0978654321', '0283765433', 'thiennhien@cosmetics.com'),
 ('NCC003', N'Dược Phẩm Hạnh Phúc', N'HanhPhuc Pharma', 'PX003', N'789 Nguyễn Trãi', '0968654321', '0283765434', 'hanhphuc@pharma.com'),
 ('NCC004', N'Công ty TNHH Dược Vina', N'Vina Pharma', 'PX004', N'12 Bạch Đằng', '0958654321', '0283765435', 'vinapharma@dvn.com'),
 ('NCC005', N'Công ty Mỹ Phẩm Ngọc Linh', N'NgocLinh Beauty', 'PX005', N'34 Đinh Tiên Hoàng', '0948654321', '0283765436', 'ngoclinh@beauty.com'),
 ('NCC006', N'Tập Đoàn Dược Phẩm Hòa Bình', N'HoaBinh Pharma', 'PX006', N'56 Võ Thị Sáu', '0938654321', '0283765437', 'hoabinh@pharma.vn'),
 ('NCC007', N'Công ty CP Mỹ Phẩm Sắc Việt', N'SacViet Cosmetics', 'PX007', N'78 Trần Hưng Đạo', '0928654321', '0283765438', 'sacviet@cosmetics.vn'),
-('NCC008', N'Công ty Dược Phẩm Hồng Hạnh', N'HongHanh Pharma', 'PX008', N'90 Phạm Văn Đồng', '0918654321', '0283765439', 'honghanh@pharma.com'),
+('NCC008', N'Nhà phân phối Sông Hồng', 'songhong@dist.vn', 'PX008', N'90 Phạm Văn Đồng', '0918654321', '0283765439', 'honghanh@pharma.com'),
 ('NCC009', N'Công ty TNHH Mỹ Phẩm Thanh Xuân', N'ThanhXuan Beauty', 'PX009', N'102 Nguyễn Huệ', '0908654392', '0283765481', 'minhduc@pharma.vn');
 --Nhập dữ liệu Khách hàng
 INSERT INTO KHACHHANG (MAKHACHHANG, TENCONGTY, TENGIAODICH, MAPX, SONHATENDUONG, EMAIL, DIENTHOAI, FAX)
@@ -298,7 +298,7 @@ VALUES
 ('KH003', DEFAULT, N'HoangGia Dist.', 'PX003', N'10 Nguyễn Thị Minh Khai', 'hoanggia@distribution.vn', '0923456789', '0283456789'),
 ('KH004', DEFAULT, N'DaiDuongXanh Co.', 'PX004', N'25 Nguyễn Văn Linh', 'daiduongxanh@oceanblue.com', '0934567890', '0284567890'),
 ('KH005', DEFAULT, N'MinhTam Production', 'PX005', N'18 Nguyễn Trãi', 'minhtam@production.vn', '0945678901', '0285678901'),
-('KH006', N'Công ty CP Phát Triển Tân Á', N'TanA Development', 'PX006', N'30 Lý Tự Trọng', 'tana@development.com', '0956789012', '0286789012'),
+('KH006', N'Công ty TNHH Dược Vina',  N'Vina Pharma', 'PX006', N'30 Lý Tự Trọng', 'tana@development.com', '0956789012', '0286789012'),
 ('KH007', N'Công ty TNHH Tâm Việt', N'TamViet Co.', 'PX007', N'45 Pasteur', 'tamviet@gmail.com', '0967890123', '0287890123'),
 ('KH008', N'Nhà phân phối Sông Hồng', N'SongHong Distribution', 'PX008', N'50 Cách Mạng Tháng 8', 'songhong@dist.vn', '0978901234', '0288901234'),
 ('KH009', N'Công ty TNHH An Phú', N'AnPhu Co.', 'PX009', N'33 Bùi Thị Xuân', 'anphu@company.com', '0989012345', '0289012345'),
