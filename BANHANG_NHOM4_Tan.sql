@@ -12,7 +12,7 @@ USE BANHANG_NHOM4;
 --Tạo bảng KHÁCH HÀNG
 	CREATE TABLE KHACHHANG
 	(
-		MAKHACHHANG CHAR(10) PRIMARY KEY,
+		MAKHACHHANG CHAR(7) PRIMARY KEY,
 		TENCONGTY NVARCHAR(50),
 		TENGIAODICH NVARCHAR(50) NOT NULL,
 		DIACHI NVARCHAR(50) NOT NULL,
@@ -23,7 +23,7 @@ USE BANHANG_NHOM4;
 --Tạo bảng NHÂN VIÊN
 	CREATE TABLE NHANVIEN 
 	(
-		MANHANVIEN CHAR(10) PRIMARY KEY,
+		MANHANVIEN CHAR(7) PRIMARY KEY,
 		HO NVARCHAR(10) NOT NULL,
 		TEN NVARCHAR(10) NOT NULL,
 		NGAYSINH DATETIME NOT NULL,
@@ -36,9 +36,9 @@ USE BANHANG_NHOM4;
 --Tạo bảng ĐƠN ĐẶT HÀNG
 	CREATE TABLE DONDATHANG 
 	(
-		SOHOADON CHAR(10) PRIMARY KEY,
-		MAKHACHHANG CHAR(10),
-		MANHANVIEN CHAR(10),
+		SOHOADON CHAR(7) PRIMARY KEY,
+		MAKHACHHANG CHAR(7),
+		MANHANVIEN CHAR(7),
 		NGAYDATHANG DATE NOT NULL,
 		NGAYGIAOHANG DATE,
 		NGAYCHUYENHANG DATE,
@@ -48,7 +48,7 @@ USE BANHANG_NHOM4;
 --Tạo bảng NHÀ CUNG CẤP
 	CREATE TABLE NHACUNGCAP
 	(
-		MACONGTY CHAR(10) PRIMARY KEY,
+		MACONGTY CHAR(7) PRIMARY KEY,
 		TENCONGTY NVARCHAR(50) NOT NULL,
 		TENGIAODICH NVARCHAR(50) NOT NULL,
 		DIACHI NVARCHAR(80),
@@ -59,16 +59,16 @@ USE BANHANG_NHOM4;
 --Tạo bảng LOẠI HÀNG
 	CREATE TABLE LOAIHANG 
 	(
-		MALOAIHANG CHAR(10) PRIMARY KEY,
+		MALOAIHANG CHAR(7) PRIMARY KEY,
 		TENLOAIHANG NVARCHAR(30)
 	)
 --Tạo Bảng MẶT HÀNG
 	CREATE TABLE MATHANG 
 	(
-		MAHANG CHAR(10) PRIMARY KEY,
+		MAHANG CHAR(7) PRIMARY KEY,
 		TENHANG NVARCHAR(50) NOT NULL,
-		MACONGTY CHAR(10),
-		MALOAIHANG CHAR(10) ,
+		MACONGTY CHAR(7),
+		MALOAIHANG CHAR(7) ,
 		SOLUONG FLOAT CHECK(SOLUONG >= 0),
 		DONVITINH NVARCHAR(10) NOT NULL,
 		GIAHANG MONEY CHECK(GIAHANG > 0),
@@ -77,8 +77,8 @@ USE BANHANG_NHOM4;
 --Tạo bảng CHI TIẾT ĐẶT HÀNG
 	CREATE TABLE CHITIETDATHANG 
 	(
-		SOHOADON CHAR(10) NOT NULL,
-		MAHANG CHAR(10) NOT NULL,
+		SOHOADON CHAR(7) NOT NULL,
+		MAHANG CHAR(7) NOT NULL,
 		GIABAN MONEY CHECK(GIABAN > 0),
 		SOLUONG FLOAT CHECK(SOLUONG > 0),
 		MUCGIAMGIA DECIMAL(10,2) CHECK(MUCGIAMGIA >= 0),
@@ -90,15 +90,15 @@ USE BANHANG_NHOM4;
 --Thêm bảng Quốc Gia
 CREATE TABLE QUOCGIA
 (
-    MAQG char(10) PRIMARY KEY,
+    MAQG char(5) PRIMARY KEY,
     TENQG nvarchar(50)
 )
 --Thêm bảng Thành Phố
 CREATE TABLE THANHPHO
 (
-    MATP char(10) PRIMARY KEY,
+    MATP char(5) PRIMARY KEY,
     TENTP nvarchar(50),
-    MAQG char(10),
+    MAQG char(5),
     FOREIGN KEY (MAQG) REFERENCES QUOCGIA(MAQG)
         ON DELETE 
 			CASCADE
@@ -108,9 +108,9 @@ CREATE TABLE THANHPHO
 --Thêm bảng Quận Huyện
 CREATE TABLE QUANHUYEN
 (
-    MAQH char(10) PRIMARY KEY,
+    MAQH char(5) PRIMARY KEY,
     TENQH nvarchar(50),
-    MATP char(10),
+    MATP char(5),
     FOREIGN KEY (MATP) REFERENCES THANHPHO(MATP)
         ON DELETE 
 			CASCADE
@@ -120,9 +120,9 @@ CREATE TABLE QUANHUYEN
 --Thêm bảng Phường Xã
 CREATE TABLE PHUONGXA
 (
-    MAPX char(10) PRIMARY KEY,
+    MAPX char(5) PRIMARY KEY,
     TENPX nvarchar(50),
-    MAQH char(10),
+    MAQH char(5),
     FOREIGN KEY (MAQH) REFERENCES QUANHUYEN(MAQH)
         ON DELETE 
 			CASCADE
@@ -136,7 +136,7 @@ CREATE TABLE PHUONGXA
 ALTER TABLE KHACHHANG
 	DROP COLUMN DIACHI
 ALTER TABLE KHACHHANG
-	ADD MAPX char(10),
+	ADD MAPX char(5),
 		SONHATENDUONG nvarchar(80),
 		--- Liên kết khóa ngoại đến bảng PHUONGXA
 	 CONSTRAINT FK_KHACHHANG_MAPX 
@@ -149,7 +149,7 @@ ALTER TABLE KHACHHANG
 ALTER TABLE NHACUNGCAP
 	DROP COLUMN DIACHI
 ALTER TABLE NHACUNGCAP
-	ADD MAPX char(10),
+	ADD MAPX char(5),
 		SONHATENDUONG nvarchar(100),
 	--- Liên kết khóa ngoại đến bảng PHUONGXA
 		CONSTRAINT FK_NHACUNGCAP_MAPX 
@@ -162,7 +162,7 @@ ALTER TABLE NHACUNGCAP
 ALTER TABLE DONDATHANG
 	DROP COLUMN NOIGIAOHANG
 ALTER TABLE DONDATHANG
-	ADD MAPX char(10),
+	ADD MAPX char(5),
 		DIACHICUTHE nvarchar(100),
 	--- Liên kết khóa ngoại đến bảng PHUONGXA
 	 CONSTRAINT FK_DONDATHANG_MAPX 
@@ -191,6 +191,7 @@ ALTER TABLE DONDATHANG
 					CASCADE
 				ON UPDATE 
 					CASCADE,
+
 				--------Bổ sung các khóa ràng buộc về thứ tự ngày-------
 		CONSTRAINT DF_DONDATHANG_NGAYDATHANG 
 				DEFAULT GETDATE() FOR NGAYDATHANG,
@@ -308,16 +309,16 @@ SET DATEFORMAT dmy;
 -- Bảng LOAIHANG
 INSERT INTO LOAIHANG (MALOAIHANG, TENLOAIHANG) 
 VALUES
-	('LH001', N'Thực phẩm đóng hộp'),  
-	('LH002', N'Đồ uống giải khát'),   
-	('LH003', N'Bánh kẹo'),            
-	('LH004', N'Gia vị'),              
-	('LH005', N'Sữa và sản phẩm sữa'), 
-	('LH006', N'Mì và bún'),           
-	('LH007', N'Gạo và ngũ cốc'),      
-	('LH008', N'Rau củ quả'),          
-	('LH009', N'Thịt và hải sản'),     
-	('LH010', N'Đồ gia dụng');
+	('MLH1001', N'Thực phẩm đóng hộp'),  
+	('MLH1002', N'Đồ uống giải khát'),   
+	('MLH1003', N'Bánh kẹo'),            
+	('MLH1004', N'Gia vị'),              
+	('MLH1005', N'Sữa và sản phẩm sữa'), 
+	('MLH1006', N'Mì và bún'),           
+	('MLH1007', N'Gạo và ngũ cốc'),      
+	('MLH1008', N'Rau củ quả'),          
+	('MLH1009', N'Thịt và hải sản'),     
+	('MLH1010', N'Đồ gia dụng');
 
 -- Bảng NHACUNGCAP
 INSERT INTO NHACUNGCAP (MACONGTY, TENCONGTY, TENGIAODICH, MAPX, SONHATENDUONG, DIENTHOAI, FAX, EMAIL) 
@@ -334,75 +335,86 @@ VALUES
 	('NCC010', N'Công ty TNHH Lavie', N'Lavie', 'PX010', N'63 Nguyễn Du', '0990123456', '0990123457', 'lavie@email.com');
 
 -- Bảng MATHANG
+-- Bảng MATHANG
 INSERT INTO MATHANG (MAHANG, TENHANG, MACONGTY, MALOAIHANG, SOLUONG, DONVITINH, GIAHANG) 
 VALUES
-	('MH001', N'Sữa tươi Vinamilk 1L', 'NCC002', 'LH005', 1000, N'Hộp', 25000),
-	('MH002', N'Coca Cola 330ml', 'NCC004', 'LH002', 2000, N'Lon', 10000),
-	('MH003', N'Mì gói Hảo Hảo', 'NCC007', 'LH001', 5000, N'Gói', 3500),
-	('MH004', N'Bánh Oreo', 'NCC009', 'LH003', 1500, N'Gói', 15000),
-	('MH005', N'Nước khoáng Lavie', 'NCC010', 'LH002', 3000, N'Chai', 8000),
-	('MH006', N'Bột giặt Omo', 'NCC003', 'LH006', 800, N'Túi', 85000),
-	('MH007', N'Dầu ăn Neptune', 'NCC005', 'LH004', 1200, N'Chai', 45000),
-	('MH008', N'Sữa chua Vinamilk', 'NCC002', 'LH005', 2500, N'Hộp', 5000),
-	('MH009', N'Pepsi 330ml', 'NCC008', 'LH002', 1800, N'Lon', 10000),
-	('MH010', N'Bánh Kit Kat', 'NCC001', 'LH003', 2000, N'Gói', 12000);
+	('MMH1001', N'Sữa tươi Vinamilk 1L', 'NCC002', 'MLH1005', 1000, N'Hộp', 25000),
+	('MMH1002', N'Coca Cola 330ml', 'NCC004', 'MLH1002', 2000, N'Lon', 10000),
+	('MMH1003', N'Mì gói Hảo Hảo', 'NCC007', 'MLH1006', 5000, N'Gói', 3500),
+	('MMH1004', N'Bánh Oreo', 'NCC009', 'MLH1003', 1500, N'Gói', 15000),
+	('MMH1005', N'Nước khoáng Lavie', 'NCC010', 'MLH1002', 3000, N'Chai', 8000),
+	('MMH1006', N'Bột giặt Omo', 'NCC003', 'MLH1009', 800, N'Túi', 85000),
+	('MMH1007', N'Dầu ăn Neptune', 'NCC005', 'MLH1004', 1200, N'Chai', 45000),
+	('MMH1008', N'Sữa chua Vinamilk', 'NCC002', 'MLH1005', 2500, N'Hộp', 5000),
+	('MMH1009', N'Pepsi 330ml', 'NCC008', 'MLH1002', 1800, N'Lon', 10000),
+	('MMH1010', N'Bánh Kit Kat', 'NCC001', 'MLH1003', 2000, N'Gói', 12000);
 
 -- Bảng KHACHHANG
 INSERT INTO KHACHHANG (MAKHACHHANG, TENCONGTY, TENGIAODICH, MAPX, SONHATENDUONG, EMAIL, DIENTHOAI, FAX) 
 VALUES
-	('KH001', N'Công ty CP Masan Consumer', 'Masan', 'PX001', N'123 Lê Lợi', 'bigc@email.com', '0123456789', '0123456790'),
-	('KH002', N'Công ty TNHH Coca-Cola VN', N'Coca-Cola', 'PX002', N'456 Nguyễn Huệ', 'coopmart@email.com', '0234567890', '0234567891'),
-	('KH003', N'Cửa hàng Bách Hóa Xanh', N'BHX', 'PX003', N'789 Lê Lai', 'bhx@email.com', '0345678901', '0345678902'),
-	('KH004', N'Siêu thị Vinmart', N'Vinmart', 'PX004', N'321 Phan Chu Trinh', 'vinmart@email.com', '0456789012', '0456789013'),
-	('KH005', DEFAULT, N'Lê Ngọc Tân', 'PX005', N'654 Trần Hưng Đạo', 'sveleven@email.com', '0567890123', '0567890124'),
-	('KH006', DEFAULT, N'Nguyễn Văn An', 'PX006', N'987 Lê Duẩn', 'nguyenvana@email.com', '0678901234', '0678901235'),
-	('KH007', DEFAULT, N'Trần Thị Bình', 'PX007', N'147 Nguyễn Du', 'tranthib@email.com', '0789012345', '0789012346'),
-	('KH008', N'Circle K', N'Circle K', 'PX008', N'258 Hai Bà Trưng', 'circlek@email.com', '0890123456', '0890123457'),
-	('KH009', N'Ministop', N'Ministop', 'PX009', N'369 Lý Tự Trọng', 'ministop@email.com', '0901234567', '0901234568'),
-	('KH010', N'Công ty CP Acecook Việt Nam', N'Acecook', 'PX010', N'159 Nam Kỳ Khởi Nghĩa', 'familymart@email.com', '0912345678', '0912345679');
+	('MKH1001', N'Công ty CP Masan Consumer', 'Masan', 'PX001', N'123 Lê Lợi', 'bigc@email.com', '0123456789', '0123456790'),
+	('MKH1002', N'Công ty TNHH Coca-Cola VN', N'Coca-Cola', 'PX002', N'456 Nguyễn Huệ', 'coopmart@email.com', '0234567890', '0234567891'),
+	('MKH1003', N'Cửa hàng Bách Hóa Xanh', N'BHX', 'PX003', N'789 Lê Lai', 'bhx@email.com', '0345678901', '0345678902'),
+	('MKH1004', N'Siêu thị Vinmart', N'Vinmart', 'PX004', N'321 Phan Chu Trinh', 'vinmart@email.com', '0456789012', '0456789013'),
+	('MKH1005', DEFAULT, N'Lê Ngọc Tân', 'PX005', N'654 Trần Hưng Đạo', 'sveleven@email.com', '0567890123', '0567890124'),
+	('MKH1006', DEFAULT, N'Nguyễn Văn An', 'PX006', N'987 Lê Duẩn', 'nguyenvana@email.com', '0678901234', '0678901235'),
+	('MKH1007', DEFAULT, N'Trần Thị Bình', 'PX007', N'147 Nguyễn Du', 'tranthib@email.com', '0789012345', '0789012346'),
+	('MKH1008', N'Circle K', N'Circle K', 'PX008', N'258 Hai Bà Trưng', 'circlek@email.com', '0890123456', '0890123457'),
+	('MKH1009', N'Công ty CP Kinh Đô', N'Kinh Do', 'PX009', N'369 Lý Tự Trọng', 'ministop@email.com', '0901234567', '0901234568'),
+	('MKH1010', N'Công ty CP Acecook Việt Nam', N'Acecook', 'PX010', N'159 Nam Kỳ Khởi Nghĩa', 'familymart@email.com', '0912345678', '0912345679');
 
--- Bảng NHANVIEN
+	-- Bảng NHANVIEN
 INSERT INTO NHANVIEN (MANHANVIEN, HO, TEN, NGAYSINH, NGAYLAMVIEC, DIACHI, DIENTHOAI, LUONGCOBAN, PHUCAP) 
 VALUES
-	('NV001', N'Nguyễn', N'An', '15-05-1990', '01-01-2015', N'234 Kim Mã', '0123123123', 10000000, 1000000),
-	('NV002', N'Trần', N'Bình', '20-08-1992', '15-03-2016', N'567 Láng Hạ', '0234234234', 12000000, 1500000),
-	('NV003', N'Lê', N'Cường', '10-12-1988', '01-06-2014', N'890 Đội Cấn', '0345345345', 15000000, 2000000),
-	('NV004', N'Phạm', N'Dung', '25-03-1995', '01-09-2018', N'123 Ba Đình', '0456456456', 9000000, 800000),
-	('NV005', N'Hoàng', N'Em', '30-07-1993', '15-12-2017', N'456 Hoàn Kiếm', '0567567567', 11000000, 1200000),
-	('NV006', N'Đặng', N'Phương', '05-11-1991', '01-08-2016', N'789 Hai Bà Trưng', '0678678678', 13000000, 1800000),
-	('NV007', N'Vũ', N'Giang', '18-02-1994', '15-01-2019', N'321 Đống Đa', '0789789789', 8500000, 700000),
-	('NV008', N'Mai', N'Hương', '22-09-1989', '01-11-2015', N'654 Cầu Giấy', '0890890890', 14000000, 2500000),
-	('NV009', N'Bùi', N'Linh', '12-04-1996', '01-03-2020', N'987 Tây Hồ', '0901901901', 9500000, 900000),
-	('NV010', N'Đỗ', N'Minh', '28-06-1992', '15-05-2017', N'147 Long Biên', '0912912912', 12500000, 1600000);
+	('MNV1001', N'Nguyễn', N'An', '15-05-1990', '01-01-2015', N'234 Kim Mã', '0123123123', 10000000, 1000000),
+	('MNV1002', N'Trần', N'Bình', '20-08-1992', '15-03-2016', N'567 Láng Hạ', '0234234234', 12000000, 1500000),
+	('MNV1003', N'Lê', N'Cường', '10-12-1988', '01-06-2014', N'890 Đội Cấn', '0345345345', 15000000, 2000000),
+	('MNV1004', N'Phạm', N'Dung', '25-03-1995', '01-09-2018', N'123 Ba Đình', '0456456456', 9000000, 800000),
+	('MNV1005', N'Hoàng', N'Em', '30-07-1993', '15-12-2017', N'456 Hoàn Kiếm', '0567567567', 11000000, 1200000),
+	('MNV1006', N'Đặng', N'Phương', '05-11-1991', '01-08-2016', N'789 Hai Bà Trưng', '0678678678', 13000000, 1800000),
+	('MNV1007', N'Vũ', N'Giang', '18-02-1994', '15-01-2019', N'321 Đống Đa', '0789789789', 8500000, 700000),
+	('MNV1008', N'Mai', N'Hương', '22-09-1989', '01-11-2015', N'654 Cầu Giấy', '0890890890', 14000000, 2500000),
+	('MNV1009', N'Bùi', N'Linh', '12-04-1996', '01-03-2020', N'987 Tây Hồ', '0901901901', 9500000, 900000),
+	('MNV1010', N'Đỗ', N'Minh', '28-06-1992', '15-05-2017', N'147 Long Biên', '0912912912', 12500000, 1600000);
+
 
 -- Bảng DONDATHANG
 INSERT INTO DONDATHANG (SOHOADON, MAKHACHHANG, MANHANVIEN, NGAYDATHANG, NGAYCHUYENHANG, NGAYGIAOHANG, MAPX, DIACHICUTHE) 
 VALUES
-    ('HD001', 'KH001', 'NV001', '15-01-2022', '17-01-2022', '20-01-2022', 'PX001', N'123 Lê Lợi'),
-    ('HD002', 'KH002', 'NV002', '10-02-2022', '11-02-2022', '15-02-2022', 'PX002', N'117 Nguyễn Huệ'),
-    ('HD003', 'KH003', 'NV003', '05-03-2023', '06-03-2023', '10-03-2023', 'PX003', N'789 Lê Lai'),
-    ('HD004', 'KH004', 'NV004', '20-04-2022', '22-04-2022', '25-04-2022', 'PX004', N'321 Phan Chu Trinh'),
-    ('HD005', 'KH005', 'NV005', '15-05-2023', '16-05-2023', '20-05-2023', 'PX005', N'654 Trần Hưng Đạo'),
-    ('HD006', 'KH006', 'NV006', '10-06-2022', '12-06-2022', '15-06-2022', 'PX006', N'12 Lê Thánh Tông'),
-    ('HD007', 'KH007', 'NV007', '25-07-2023', '26-07-2023', '30-07-2023', 'PX007', N'23 Bùi Viện'),
-    ('HD008', 'KH008', 'NV008', '15-08-2022', '17-08-2022', '20-08-2022', 'PX008', N'45 Nguyễn Văn Trỗi'),
-    ('HD009', 'KH009', 'NV009', '10-09-2023', '12-09-2023', '15-09-2023', 'PX009', N'678 Lê Văn Sỹ'),
-    ('HD010', 'KH010', 'NV003', '19-07-2024', '24-07-2024', '26-07-2024', 'PX010', N'91 Cách Mạng Tháng 8'),
-    ('HD011', 'KH005', 'NV003', '19-11-2024', '23-11-2022', '24-11-2024', 'PX007', N'48 Cao Thắng'),
-    ('HD012', 'KH007', 'NV003', '07-10-2020', '15-10-2022', '18-10-2020', 'PX005', N'65 Hoàng Diệu');
+    ('MHD1001', 'MKH1001', 'MNV1001', '15-01-2022', null, null, 'PX001', null),
+    ('MHD1002', 'MKH1002', 'MNV1002', '10-02-2022', '11-02-2022', '15-02-2022', 'PX002', N'117 Nguyễn Huệ'),
+    ('MHD1003', 'MKH1003', 'MNV1003', '05-03-2023', '06-03-2023', '10-03-2023', 'PX003', N'789 Lê Lai'),
+    ('MHD1004', 'MKH1004', 'MNV1004', '20-04-2022', '22-04-2022', '25-04-2022', 'PX004',null),
+    ('MHD1005', 'MKH1005', 'MNV1005', '15-05-2023', null, null, 'PX005', N'654 Trần Hưng Đạo'),
+    ('MHD1006', 'MKH1006', 'MNV1006', '10-06-2022', '12-06-2022', '15-06-2022', 'PX006', N'12 Lê Thánh Tông'),
+    ('MHD1007', 'MKH1007', 'MNV1007', '25-07-2023', '26-07-2023', '30-07-2023', 'PX007', N'23 Bùi Viện'),
+    ('MHD1008', 'MKH1008', 'MNV1008', '15-08-2022', null, null, 'PX008', N'45 Nguyễn Du'),
+    ('MHD1009', 'MKH1009', 'MNV1009', '10-09-2023', '12-09-2023', '15-09-2023', 'PX009', null),
+    ('MHD1010', 'MKH1010', 'MNV1010', '05-10-2022', '07-10-2022', '10-10-2022', 'PX010', null),
+	('MHD1011', 'MKH1001', 'MNV1002', '20-10-2022', null, null, 'PX001', N'123 Lê Lợi'),
+    ('MHD1012', 'MKH1003', 'MNV1004', '18-08-2023', '19-08-2023', '23-08-2023', 'PX003', N'789 Lê Lai'),
+    ('MHD1013', 'MKH1005', 'MNV1006', '15-06-2022', null, null, 'PX005', N'654 Trần Hưng Đạo'),
+    ('MHD1014', 'MKH1007', 'MNV1008', '30-09-2022', '01-10-2022', '05-10-2022', 'PX007', N'23 Bùi Viện'),
+    ('MHD1015', 'MKH1009', 'MNV1010', '05-11-2023', '06-11-2023', '10-11-2023', 'PX009', null);
 
 -- Bảng CHITIETDATHANG
 INSERT INTO CHITIETDATHANG (SOHOADON, MAHANG, GIABAN, SOLUONG, MUCGIAMGIA) 
 VALUES
-	('HD001', 'MH001', 26000, 100, 5),
-	('HD002', 'MH002', 11000, 200, 3),
-	('HD003', 'MH003', 4000, 500, 2),
-	('HD004', 'MH004', 16000, 150, 4),
-	('HD005', 'MH005', 9000, 300, 2),
-	('HD006', 'MH006', 90000, 50, 6),
-	('HD007', 'MH007', 48000, 80, 3),
-	('HD008', 'MH008', 5500, 200, 2),
-	('HD009', 'MH009', 11000, 150, 4),
-	('HD010', 'MH010', 13000, 100, 5);
+	('MHD1001', 'MMH1001', 26000, 21, 10),
+	('MHD1002', 'MMH1002', 11000, 110, 12),
+	('MHD1003', 'MMH1003', 4000, 10, 5),
+	('MHD1004', 'MMH1004', 16000, 10, 5),
+	('MHD1005', 'MMH1005', 9000, 80, 10),
+	('MHD1006', 'MMH1006', 90000, 50, 5),
+	('MHD1007', 'MMH1007', 48000, 80, 5),
+	('MHD1008', 'MMH1008', 5500, 17, 15),
+	('MHD1009', 'MMH1009', 11000, 150, 12),
+	('MHD1010', 'MMH1010', 13000, 20, 3),
+	('MHD1011', 'MMH1001', 13000, 5, 5),
+	('MHD1012', 'MMH1001', 13000, 19, 3),
+	('MHD1013', 'MMH1002', 13000, 50, 3),
+	('MHD1014', 'MMH1002', 13000, 40, 3),
+	('MHD1015', 'MMH1006', 13000, 15, 3);
+
 
 	       ------------------------------ UPDATE DỮ LIỆU ------------------------------------
