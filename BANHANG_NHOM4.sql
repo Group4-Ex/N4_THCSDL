@@ -42,7 +42,7 @@ USE BANHANG_NHOM4;
 		NGAYDATHANG DATE NOT NULL,
 		NGAYGIAOHANG DATE,
 		NGAYCHUYENHANG DATE,
-		NOIGIAOHANG NVARCHAR(50) NOT NULL
+		NOIGIAOHANG NVARCHAR(100) 
 			
 	)
 --Tạo bảng NHÀ CUNG CẤP
@@ -160,10 +160,7 @@ ALTER TABLE NHACUNGCAP
 					NO ACTION;
 -- Bảng DONDATHANG 
 ALTER TABLE DONDATHANG
-	DROP COLUMN NOIGIAOHANG
-ALTER TABLE DONDATHANG
-	ADD MAPX char(5),
-		DIACHICUTHE nvarchar(100),
+	 ADD MAPX char(5),
 	--- Liên kết khóa ngoại đến bảng PHUONGXA
 	 CONSTRAINT FK_DONDATHANG_MAPX 
 		FOREIGN KEY (MAPX) REFERENCES PHUONGXA(MAPX)
@@ -366,36 +363,36 @@ VALUES
 	-- Bảng NHANVIEN
 INSERT INTO NHANVIEN (MANHANVIEN, HO, TEN, NGAYSINH, NGAYLAMVIEC, DIACHI, DIENTHOAI, LUONGCOBAN, PHUCAP) 
 VALUES
-	('MNV1001', N'Nguyễn', N'An', '15-05-1990', '01-01-2015', N'234 Kim Mã', '0123123123', 10000000, 1000000),
-	('MNV1002', N'Trần', N'Bình', '20-08-1992', '15-03-2016', N'567 Láng Hạ', '0234234234', 12000000, 1500000),
-	('MNV1003', N'Lê', N'Cường', '10-12-1988', '01-06-2014', N'890 Đội Cấn', '0345345345', 15000000, 2000000),
-	('MNV1004', N'Phạm', N'Dung', '25-03-1995', '01-09-2018', N'123 Ba Đình', '0456456456', 9000000, 800000),
-	('MNV1005', N'Hoàng', N'Em', '30-07-1993', '15-12-2017', N'456 Hoàn Kiếm', '0567567567', 11000000, 1200000),
-	('MNV1006', N'Đặng', N'Phương', '05-11-1991', '01-08-2016', N'789 Hai Bà Trưng', '0678678678', 13000000, 1800000),
-	('MNV1007', N'Vũ', N'Giang', '18-02-1994', '15-01-2019', N'321 Đống Đa', '0789789789', 8500000, 700000),
-	('MNV1008', N'Mai', N'Hương', '22-09-1989', '01-11-2015', N'654 Cầu Giấy', '0890890890', 14000000, 2500000),
-	('MNV1009', N'Bùi', N'Linh', '12-04-1996', '01-03-2020', N'987 Tây Hồ', '0901901901', 9500000, 900000),
-	('MNV1010', N'Đỗ', N'Minh', '28-06-1992', '15-05-2017', N'147 Long Biên', '0912912912', 12500000, 1600000);
+	('MNV1001', N'Nguyễn', N'An', '15-05-1990', '01-01-2015', N'234 Kim Mã', '0123123123', 8000000, 1000000),
+	('MNV1002', N'Trần', N'Bình', '20-08-1992', '15-03-2016', N'567 Láng Hạ', '0234234234', 8000000, 1500000),
+	('MNV1003', N'Lê', N'Cường', '10-12-1988', '01-06-2014', N'890 Đội Cấn', '0345345345', 10000000, 2000000),
+	('MNV1004', N'Phạm', N'Dung', '25-03-1995', '01-09-2018', N'123 Ba Đình', '0456456456', 10000000, 800000),
+	('MNV1005', N'Hoàng', N'Em', '30-07-1993', '15-12-2017', N'456 Hoàn Kiếm', '0567567567', 8000000, 1200000),
+	('MNV1006', N'Đặng', N'Phương', '05-11-1991', '01-08-2016', N'789 Hai Bà Trưng', '0678678678', 10000000, 1800000),
+	('MNV1007', N'Vũ', N'Giang', '18-02-1994', '15-01-2019', N'321 Đống Đa', '0789789789', 800000, 700000),
+	('MNV1008', N'Mai', N'Hương', '22-09-1989', '01-11-2015', N'654 Cầu Giấy', '0890890890', 8000000, 2500000),
+	('MNV1009', N'Bùi', N'Linh', '12-04-1996', '01-03-2020', N'987 Tây Hồ', '0901901901', 800000, 900000),
+	('MNV1010', N'Đỗ', N'Minh', '28-06-1992', '15-05-2017', N'147 Long Biên', '0912912912', 8000000, 1600000);
 
 
 -- Bảng DONDATHANG
-INSERT INTO DONDATHANG (SOHOADON, MAKHACHHANG, MANHANVIEN, NGAYDATHANG, NGAYCHUYENHANG, NGAYGIAOHANG, MAPX, DIACHICUTHE) 
+INSERT INTO DONDATHANG (SOHOADON, MAKHACHHANG, MANHANVIEN, NGAYDATHANG, NGAYCHUYENHANG, NGAYGIAOHANG, MAPX, NOIGIAOHANG) 
 VALUES
-    ('MHD1001', 'MKH1001', 'MNV1001', '15-01-2022', null, null, 'PX001', null),
+    ('MHD1001', 'MKH1001', 'MNV1001', '15-01-2022', null, null, null, null),
     ('MHD1002', 'MKH1002', 'MNV1002', '10-02-2022', '11-02-2022', '15-02-2022', 'PX002', N'117 Nguyễn Huệ'),
     ('MHD1003', 'MKH1003', 'MNV1003', '05-03-2023', '06-03-2023', '10-03-2023', 'PX003', N'789 Lê Lai'),
-    ('MHD1004', 'MKH1004', 'MNV1004', '20-04-2022', '22-04-2022', '25-04-2022', 'PX004',null),
+    ('MHD1004', 'MKH1004', 'MNV1004', '20-04-2022', '22-04-2022', '25-04-2022', null,null),
     ('MHD1005', 'MKH1005', 'MNV1005', '15-05-2023', null, null, 'PX005', N'654 Trần Hưng Đạo'),
     ('MHD1006', 'MKH1006', 'MNV1006', '10-06-2022', '12-06-2022', '15-06-2022', 'PX006', N'12 Lê Thánh Tông'),
     ('MHD1007', 'MKH1007', 'MNV1007', '25-07-2023', '26-07-2023', '30-07-2023', 'PX007', N'23 Bùi Viện'),
     ('MHD1008', 'MKH1008', 'MNV1008', '15-08-2022', null, null, 'PX008', N'45 Nguyễn Du'),
-    ('MHD1009', 'MKH1009', 'MNV1009', '10-09-2023', '12-09-2023', '15-09-2023', 'PX009', null),
-    ('MHD1010', 'MKH1010', 'MNV1010', '05-10-2022', '07-10-2022', '10-10-2022', 'PX010', null),
+    ('MHD1009', 'MKH1009', 'MNV1009', '10-09-2023', '12-09-2023', '15-09-2023', null, null),
+    ('MHD1010', 'MKH1010', 'MNV1010', '05-10-2022', '07-10-2022', '10-10-2022', null, null),
 	('MHD1011', 'MKH1001', 'MNV1002', '20-10-2022', null, null, 'PX001', N'123 Lê Lợi'),
     ('MHD1012', 'MKH1003', 'MNV1004', '18-08-2023', '19-08-2023', '23-08-2023', 'PX003', N'789 Lê Lai'),
     ('MHD1013', 'MKH1005', 'MNV1006', '15-06-2022', null, null, 'PX005', N'654 Trần Hưng Đạo'),
     ('MHD1014', 'MKH1007', 'MNV1008', '30-09-2022', '01-10-2022', '05-10-2022', 'PX007', N'23 Bùi Viện'),
-    ('MHD1015', 'MKH1009', 'MNV1010', '05-11-2023', '06-11-2023', '10-11-2023', 'PX009', null);
+    ('MHD1015', 'MKH1009', 'MNV1010', '05-11-2023', '06-11-2023', '10-11-2023', null, null);
 
 -- Bảng CHITIETDATHANG
 INSERT INTO CHITIETDATHANG (SOHOADON, MAHANG, GIABAN, SOLUONG, MUCGIAMGIA) 
@@ -410,25 +407,77 @@ VALUES
 	('MHD1008', 'MMH1008', 5500, 17, 15),
 	('MHD1009', 'MMH1009', 11000, 150, 12),
 	('MHD1010', 'MMH1010', 13000, 20, 3),
-	('MHD1011', 'MMH1001', 13000, 5, 5),
+	('MHD1011', 'MMH1001', 13000, 40, 5),
 	('MHD1012', 'MMH1001', 13000, 19, 3),
 	('MHD1013', 'MMH1002', 13000, 50, 3),
 	('MHD1014', 'MMH1002', 13000, 40, 3),
 	('MHD1015', 'MMH1006', 13000, 15, 3);
 
 
-	       ------------------------------ UPDATE DỮ LIỆU ------------------------------------
--- b) Tăng số lượng hàng của những mặt hàng do công ty VINAMILK cung cấp lên gấp đôi.
+
+
+						 ------------------------------------ TUẦN 8 - UPADTE  ------------------------------------
+
+------a. Cập nhật lại giá trị trường NGAYCHUYENHANG của những bản ghi có NGAYCHUYENHANG chưa xác định (NULL) trong bảng DONDATHANG bằng với giá trị của trường NGAYDATHANG.
+UPDATE DONDATHANG
+SET NGAYCHUYENHANG = NGAYDATHANG
+WHERE NGAYCHUYENHANG IS NULL;
+
+
+		   ------------ b. Tăng số lượng hàng của những mặt hàng do công ty VINAMILK cung cấp lên gấp đôi ------------------
 UPDATE MATHANG
 SET SOLUONG = SOLUONG * 2
 WHERE MACONGTY = 'NCC002'
--- f) Tăng phụ cấp lên bằng 50% lương cho những nhân viên bán được hàng nhiều nhất.
+
+
+	-------------c. Cập nhật giá trị của trường NOIGIAOHANG trong bảng DONDATHANG bằng địa chỉ của khách hàng đối với những đơn đặt hàng 
+						--------chưa xác định được nơi giao hàng (giá trị trường NOIGIAOHANG bằng NULL).
+
+UPDATE DONDATHANG
+SET NOIGIAOHANG = KH.SONHATENDUONG, MAPX = KH.MAPX
+FROM KHACHHANG AS KH
+WHERE NOIGIAOHANG IS NULL AND KH.MAKHACHHANG = DONDATHANG.MAKHACHHANG;
+
+
+
+		-------------------  d. Cập nhật lại thông tin khách hàng giống với thông tin từ bảng NHACUNGCAP -------------------------
+      -------- nếu tên công ty và tên giao dịch tại bảng KHACHHANG trùng với tên công ty và mã giao dịch tại bảng NHACUNGCAP ---------
+
+UPDATE KHACHHANG
+SET MAPX = NCC.MAPX, SONHATENDUONG = NCC.SONHATENDUONG, 
+	FAX = NCC.FAX, DIENTHOAI = NCC.DIENTHOAI, EMAIL = NCC.EMAIL
+FROM NHACUNGCAP AS NCC
+WHERE NCC.TENCONGTY = KHACHHANG.TENCONGTY AND NCC.TENGIAODICH = KHACHHANG.TENGIAODICH
+
+
+			--------------e. Tăng lương lên gấp rưỡi cho những nhân viên bán được số lượng hàng nhiều hơn 100 trong năm 2022-----------------
+UPDATE NHANVIEN
+SET LUONGCOBAN = LUONGCOBAN * 1.5
+WHERE MANHANVIEN IN (
+    SELECT MANHANVIEN
+    FROM DONDATHANG as d,CHITIETDATHANG as c
+    WHERE YEAR(NGAYDATHANG) = 2022 and d.SOHOADON = c.SOHOADON
+    GROUP BY d.MANHANVIEN
+    HAVING SUM(SOLUONG) > 100
+);
+
+
+	-------------------- f. Tăng phụ cấp lên bằng 50% lương cho những nhân viên bán được hàng nhiều nhất -----------------------
 UPDATE NHANVIEN
 SET PHUCAP=LUONGCOBAN * 0.5
 WHERE MANHANVIEN IN (SELECT MANHANVIEN
 					 FROM DONDATHANG JOIN CHITIETDATHANG ON DONDATHANG.SOHOADON=CHITIETDATHANG.SOHOADON
 					 GROUP BY MANHANVIEN
-					 HAVING SUM(SOLUONG)>=ALL
+					 HAVING SUM(SOLUONG) >= ALL
 						(SELECT SUM(SOLUONG)
 						 FROM DONDATHANG JOIN CHITIETDATHANG ON DONDATHANG.SOHOADON=CHITIETDATHANG.SOHOADON
 						 GROUP BY MANHANVIEN))
+
+
+		----------------g. Giảm 25% lương của những nhân viên trong năm 2023 không lập được bất kỳ đơn đặt hàng nào-------------------
+UPDATE NHANVIEN
+SET LUONGCOBAN = LUONGCOBAN * 0.75
+WHERE MANHANVIEN NOT IN (
+    SELECT DISTINCT MANHANVIEN
+    FROM DONDATHANG
+    WHERE YEAR(NGAYDATHANG) = 2023)
