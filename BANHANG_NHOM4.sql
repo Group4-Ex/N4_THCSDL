@@ -304,62 +304,92 @@ INSERT INTO PHUONGXA(MAPX, TENPX, MAQH)
 SET DATEFORMAT dmy;
 
 -- Bảng LOAIHANG
+-- Bảng LOAIHANG với danh mục mới
 INSERT INTO LOAIHANG (MALOAIHANG, TENLOAIHANG) 
 VALUES
-	('MLH1001', N'Thực phẩm đóng hộp'),  
-	('MLH1002', N'Đồ uống giải khát'),   
-	('MLH1003', N'Bánh kẹo'),            
-	('MLH1004', N'Gia vị'),              
-	('MLH1005', N'Sữa và sản phẩm sữa'), 
-	('MLH1006', N'Mì và bún'),           
-	('MLH1007', N'Gạo và ngũ cốc'),      
-	('MLH1008', N'Rau củ quả'),          
-	('MLH1009', N'Thịt và hải sản'),     
-	('MLH1010', N'Đồ gia dụng');
+    ('MLH1001', N'Thực phẩm'),
+    ('MLH1002', N'Đồ uống'),
+    ('MLH1003', N'Đồ dùng sinh hoạt'),
+    ('MLH1004', N'Đồ vệ sinh'),
+    ('MLH1005', N'Văn phòng phẩm'),
+    ('MLH1006', N'Chăm sóc cá nhân'),
+    ('MLH1007', N'Đồ điện tử'),
+    ('MLH1008', N'Đồ gia dụng'),
+    ('MLH1009', N'Thời trang'),
+    ('MLH1010', N'Thể thao & Dã ngoại');
+
 
 -- Bảng NHACUNGCAP
 INSERT INTO NHACUNGCAP (MACONGTY, TENCONGTY, TENGIAODICH, MAPX, SONHATENDUONG, DIENTHOAI, FAX, EMAIL) 
 VALUES
-	('NCC001', N'Công ty TNHH Nestlé Việt Nam', N'Nestlé VN', 'PX001', N'22 Đường Số 1', '0901234567', '0901234568', 'nestle@email.com'),
-	('NCC002', N'Công ty CP Vinamilk', N'Vinamilk', 'PX003', N'10 Tân Trào', '0912345678', '0912345679', 'vinamilk@email.com'),
-	('NCC003', N'Công ty TNHH Unilever VN', N'Unilever', 'PX005', N'156 Nguyễn Lương Bằng', '0923456789', '0923456790', 'unilever@email.com'),
-	('NCC004', N'Công ty TNHH Coca-Cola VN', N'Coca-Cola', 'PX002', N'485 Nguyễn Văn Cừ', '0934567890', '0934567891', 'cocacola@email.com'),
-	('NCC005', N'Công ty CP Masan Consumer', N'Masan', 'PX004', N'39 Lê Duẩn', '0945678901', '0945678902', 'masan@email.com'),
-	('NCC006', N'Công ty TNHH P&G Việt Nam', N'P&G', 'PX006', N'27 Nguyễn Thị Minh Khai', '0956789012', '0956789013', 'pg@email.com'),
-	('NCC007', N'Công ty CP Acecook Việt Nam', N'Acecook', 'PX007', N'44 Vũ Trọng Phụng', '0967890123', '0967890124', 'acecook@email.com'),
-	('NCC008', N'Công ty TNHH Pepsi Việt Nam', N'Pepsi', 'PX008', N'15 Lê Lợi', '0978901234', '0978901235', 'pepsi@email.com'),
-	('NCC009', N'Công ty CP Kinh Đô', N'Kinh Do', 'PX009', N'88 Hai Bà Trưng', '0989012345', '0989012346', 'kinhdo@email.com'),
-	('NCC010', N'Công ty TNHH Lavie', N'Lavie', 'PX010', N'63 Nguyễn Du', '0990123456', '0990123457', 'lavie@email.com');
+    -- Nhà cung cấp thực phẩm
+    ('NCC001', N'Công ty CP Thực phẩm Sạch', N'Clean Food', 'PX001', N'22 Đường Số 1', '0901234567', '0901234568', 'cleanfood@email.com'),
+    ('NCC002', N'Công ty TNHH Thực phẩm Việt', N'Viet Foods', 'PX002', N'15 Nguyễn Huệ', '0912345678', '0912345679', 'vietfoods@email.com'),
+    
+    -- Nhà cung cấp đồ uống
+    ('NCC003', N'Công ty CP Vinamilk', N'Vinamilk', 'PX003', N'10 Tân Trào', '0923456789', '0923456790', 'vinamilk@email.com'),
+    ('NCC004', N'Công ty TNHH Coca-Cola VN', N'Coca-Cola', 'PX004', N'156 Nguyễn Lương Bằng', '0934567890', '0934567891', 'cocacola@email.com'),
+    
+    -- Nhà cung cấp đồ dùng sinh hoạt và vệ sinh
+    ('NCC005', N'Công ty TNHH Unilever VN', N'Unilever', 'PX005', N'39 Lê Duẩn', '0945678901', '0945678902', 'unilever@email.com'),
+    ('NCC006', N'Công ty TNHH P&G Việt Nam', N'P&G', 'PX006', N'27 Nguyễn Thị Minh Khai', '0956789012', '0956789013', 'pg@email.com'),
+    
+    -- Nhà cung cấp văn phòng phẩm
+    ('NCC007', N'Công ty CP Thiên Long', N'Thien Long', 'PX007', N'44 Vũ Trọng Phụng', '0967890123', '0967890124', 'thienlong@email.com'),
+    
+    -- Nhà cung cấp đồ điện tử
+    ('NCC008', N'Công ty TNHH Samsung Việt Nam', N'Samsung', 'PX008', N'15 Lê Lợi', '0978901234', '0978901235', 'samsung@email.com'),
+    
+    -- Nhà cung cấp đồ gia dụng
+    ('NCC009', N'Công ty CP Sunhouse', N'Sunhouse', 'PX009', N'88 Hai Bà Trưng', '0989012345', '0989012346', 'sunhouse@email.com'),
+    
+    -- Nhà cung cấp thời trang
+    ('NCC010', N'Công ty CP May Việt Tiến', N'Viet Tien', 'PX010', N'63 Nguyễn Du', '0990123456', '0990123457', 'viettien@email.com');
 
--- Bảng MATHANG
--- Bảng MATHANG
+
+	-- Bảng MATHANG
 INSERT INTO MATHANG (MAHANG, TENHANG, MACONGTY, MALOAIHANG, SOLUONG, DONVITINH, GIAHANG) 
 VALUES
-	('MMH1001', N'Sữa tươi Vinamilk 1L', 'NCC002', 'MLH1005', 1000, N'Hộp', 25000),
-	('MMH1002', N'Coca Cola 330ml', 'NCC004', 'MLH1002', 2000, N'Lon', 10000),
-	('MMH1003', N'Mì gói Hảo Hảo', 'NCC007', 'MLH1006', 5000, N'Gói', 3500),
-	('MMH1004', N'Bánh Oreo', 'NCC009', 'MLH1003', 1500, N'Gói', 15000),
-	('MMH1005', N'Nước khoáng Lavie', 'NCC010', 'MLH1002', 3000, N'Chai', 8000),
-	('MMH1006', N'Bột giặt Omo', 'NCC003', 'MLH1009', 800, N'Túi', 85000),
-	('MMH1007', N'Dầu ăn Neptune', 'NCC005', 'MLH1004', 1200, N'Chai', 45000),
-	('MMH1008', N'Sữa chua Vinamilk', 'NCC002', 'MLH1005', 2500, N'Hộp', 5000),
-	('MMH1009', N'Pepsi 330ml', 'NCC008', 'MLH1002', 1800, N'Lon', 10000),
-	('MMH1010', N'Bánh Kit Kat', 'NCC001', 'MLH1003', 2000, N'Gói', 12000);
+    -- Thực phẩm  
+    ('MMH1001', N'Thịt heo xay', 'NCC001', 'MLH1001', 1000, N'Kg', 120000),
+    ('MMH1002', N'Cá hồi phi lê', 'NCC001', 'MLH1001', 500, N'Kg', 350000),
+    
+    -- Đồ uống
+    ('MMH1003', N'Coca Cola 330ml', 'NCC004', 'MLH1002', 5000, N'Lon', 10000),
+    ('MMH1004', N'Sữa tươi Vinamilk 1L', 'NCC003', 'MLH1002', 3000, N'Chai', 8000),
+    ('MMH1005', N'Sữa hộp XYZ', 'NCC003', 'MLH1002', 2000, N'Hộp', 5000),
+    
+    -- Đồ dùng sinh hoạt
+    ('MMH1006', N'Chổi lau nhà', 'NCC003', 'MLH1003', 200, N'Cái', 85000),
+    ('MMH1007', N'Khăn lau bếp', 'NCC003', 'MLH1003', 800, N'Gói', 25000),
+    
+    -- Đồ vệ sinh  
+    ('MMH1008', N'Bột giặt OMO', 'NCC005', 'MLH1004', 1200, N'Túi', 85000),
+    ('MMH1009', N'Nước rửa chén Sunlight', 'NCC005', 'MLH1004', 1500, N'Chai', 35000),
+    
+    -- Chăm sóc cá nhân
+    ('MMH1010', N'Dầu gội Head & Shoulders', 'NCC006', 'MLH1006', 1800, N'Chai', 95000),
+    ('MMH1011', N'Kem đánh răng P/S', 'NCC006', 'MLH1006', 2000, N'Tuýp', 32000);
 
 -- Bảng KHACHHANG
+-- Thêm dữ liệu mới cho bảng KHACHHANG
 INSERT INTO KHACHHANG (MAKHACHHANG, TENCONGTY, TENGIAODICH, MAPX, SONHATENDUONG, EMAIL, DIENTHOAI, FAX) 
 VALUES
-	('MKH1001', N'Công ty CP Masan Consumer', 'Masan', 'PX001', N'123 Lê Lợi', 'bigc@email.com', '0123456789', '0123456790'),
-	('MKH1002', N'Công ty TNHH Coca-Cola VN', N'Coca-Cola', 'PX002', N'456 Nguyễn Huệ', 'coopmart@email.com', '0234567890', '0234567891'),
-	('MKH1003', N'Cửa hàng Bách Hóa Xanh', N'BHX', 'PX003', N'789 Lê Lai', 'bhx@email.com', '0345678901', '0345678902'),
-	('MKH1004', N'Siêu thị Vinmart', N'Vinmart', 'PX004', N'321 Phan Chu Trinh', 'vinmart@email.com', '0456789012', '0456789013'),
-	('MKH1005', DEFAULT, N'Lê Ngọc Tân', 'PX005', N'654 Trần Hưng Đạo', 'sveleven@email.com', '0567890123', '0567890124'),
-	('MKH1006', DEFAULT, N'Nguyễn Văn An', 'PX006', N'987 Lê Duẩn', 'nguyenvana@email.com', '0678901234', '0678901235'),
-	('MKH1007', DEFAULT, N'Trần Thị Bình', 'PX007', N'147 Nguyễn Du', 'tranthib@email.com', '0789012345', '0789012346'),
-	('MKH1008', N'Circle K', N'Circle K', 'PX008', N'258 Hai Bà Trưng', 'circlek@email.com', '0890123456', '0890123457'),
-	('MKH1009', N'Công ty CP Kinh Đô', N'Kinh Do', 'PX009', N'369 Lý Tự Trọng', 'ministop@email.com', '0901234567', '0901234568'),
-	('MKH1010', N'Công ty CP Acecook Việt Nam', N'Acecook', 'PX010', N'159 Nam Kỳ Khởi Nghĩa', 'familymart@email.com', '0912345678', '0912345679');
-
+	-- 3 khách hàng tự do, không thuộc khách hàng doanh nghiệp
+    ('MKH1001', DEFAULT, N'Nguyễn Văn An', 'PX001', N'123 Lê Lợi', 'nguyenvanan@email.com', '0123456789', '0123456790'),
+    ('MKH1002', DEFAULT, N'Trần Thị Bình', 'PX002', N'456 Nguyễn Huệ', 'tranthib@email.com', '0234567890', '0234567891'),
+    ('MKH1003', DEFAULT, N'Lê Hoàng Phương', 'PX003', N'789 Lê Lai', 'lehoangp@email.com', '0345678901', '0345678902'),
+    
+    -- 2 khách hàng công ty từ bảng NHACUNGCAP nhưng không đúng các thông tin khác không chính xác
+    ('MKH1004', N'Công ty CP Vinamilk', N'Vinamilk', 'PX005', N'K65/95 Tô Hiến Thành', 'auto@gamil.com', '0991123456', '0991123456'),
+    ('MKH1005', N'Công ty TNHH Coca-Cola VN', N'Coca-Cola', 'PX005', N'634 Lê Duẫn', 'auto2@gmail.com', '0567892233', '0567892233'),
+    
+    -- Các khách hàng doanh nghiệp khác
+    ('MKH1006', N'Công ty TNHH Siêu thị BigC', N'BigC', 'PX006', N'987 Lê Duẩn', 'bigc@email.com', '0678901234', '0678901235'),
+    ('MKH1007', N'Cửa hàng Bách Hóa Xanh', N'BHX', 'PX007', N'147 Nguyễn Du', 'bhx@email.com', '0789012345', '0789012346'),
+    ('MKH1008', N'Siêu thị Winmart', N'Winmart', 'PX008', N'258 Hai Bà Trưng', 'winmart@email.com', '0890123456', '0890123457'),
+    ('MKH1009', N'Cửa hàng Circle K', N'Circle K', 'PX009', N'369 Lý Tự Trọng', 'circlek@email.com', '0901234567', '0901234568'),
+    ('MKH1010', N'Siêu thị MiniMart', N'MiniMart', 'PX010', N'159 Nam Kỳ Khởi Nghĩa', 'minimart@email.com', '0912345678', '0912345679');
 	-- Bảng NHANVIEN
 INSERT INTO NHANVIEN (MANHANVIEN, HO, TEN, NGAYSINH, NGAYLAMVIEC, DIACHI, DIENTHOAI, LUONGCOBAN, PHUCAP) 
 VALUES
@@ -397,26 +427,24 @@ VALUES
 -- Bảng CHITIETDATHANG
 INSERT INTO CHITIETDATHANG (SOHOADON, MAHANG, GIABAN, SOLUONG, MUCGIAMGIA) 
 VALUES
-	('MHD1001', 'MMH1001', 26000, 21, 10),
-	('MHD1002', 'MMH1002', 11000, 110, 12),
-	('MHD1003', 'MMH1003', 4000, 10, 5),
-	('MHD1004', 'MMH1004', 16000, 10, 5),
-	('MHD1005', 'MMH1005', 9000, 80, 10),
-	('MHD1006', 'MMH1006', 90000, 50, 5),
-	('MHD1007', 'MMH1007', 48000, 80, 5),
-	('MHD1008', 'MMH1008', 5500, 17, 15),
-	('MHD1009', 'MMH1009', 11000, 150, 12),
-	('MHD1010', 'MMH1010', 13000, 20, 3),
-	('MHD1011', 'MMH1001', 13000, 40, 5),
-	('MHD1012', 'MMH1001', 13000, 19, 3),
-	('MHD1013', 'MMH1002', 13000, 50, 3),
-	('MHD1014', 'MMH1002', 13000, 40, 3),
-	('MHD1015', 'MMH1006', 13000, 15, 3);
+    ('MHD1001', 'MMH1001', 180000, 21, 5),    
+    ('MHD1002', 'MMH1003', 11000, 110, 12),   
+    ('MHD1003', 'MMH1004', 9000, 10, 5),     
+    ('MHD1004', 'MMH1005', 6000, 10, 5),      
+    ('MHD1005', 'MMH1006', 95000, 80, 10),     
+    ('MHD1006', 'MMH1007', 30000, 50, 5),     
+    ('MHD1007', 'MMH1008', 95000, 80, 5),     
+    ('MHD1008', 'MMH1009', 42000, 17, 15),    
+    ('MHD1009', 'MMH1010', 110000, 150, 12),   
+    ('MHD1010', 'MMH1002', 390000, 20, 3),     
+    ('MHD1011', 'MMH1001', 125000, 40, 5),    
+    ('MHD1012', 'MMH1001', 125000, 19, 3),     
+    ('MHD1013', 'MMH1003', 11000, 50, 3),      
+    ('MHD1014', 'MMH1003', 11000, 40, 3),      
+    ('MHD1015', 'MMH1007', 30000, 15, 3);      
 
 
-
-
-						 ------------------------------------ TUẦN 8 - UPADTE  ------------------------------------
+	    ------------------------------------ TUẦN 8 - UPADTE  ------------------------------------
 
 ------a. Cập nhật lại giá trị trường NGAYCHUYENHANG của những bản ghi có NGAYCHUYENHANG chưa xác định (NULL) trong bảng DONDATHANG bằng với giá trị của trường NGAYDATHANG.
 UPDATE DONDATHANG
@@ -478,6 +506,90 @@ WHERE MANHANVIEN IN (SELECT MANHANVIEN
 UPDATE NHANVIEN
 SET LUONGCOBAN = LUONGCOBAN * 0.75
 WHERE MANHANVIEN NOT IN (
-    SELECT DISTINCT MANHANVIEN
+    SELECT MANHANVIEN
     FROM DONDATHANG
     WHERE YEAR(NGAYDATHANG) = 2023)
+
+
+			--------------------------------------- BÀI TẬP CÁ NHÂN -----------------------------------------------
+
+
+-- 1. Địa chỉ và điện thoại của nhà cung cấp có tên giao dịch [VINAMILK]  là gì?
+SELECT SONHATENDUONG, MAPX, DIENTHOAI
+FROM NHACUNGCAP
+WHERE TENGIAODICH = 'VINAMILK'
+
+-- 2. Loại hàng thực phẩm do những công ty nào cung cấp và địa chỉ của các công ty đó là gì?
+SELECT DISTINCT TENLOAIHANG, NHACUNGCAP.MACONGTY, TENCONGTY, SONHATENDUONG
+FROM LOAIHANG 
+INNER JOIN MATHANG ON LOAIHANG.MALOAIHANG = MATHANG.MALOAIHANG
+INNER JOIN NHACUNGCAP ON MATHANG.MACONGTY=NHACUNGCAP.MACONGTY
+WHERE TENLOAIHANG = N'Thực phẩm'
+
+-- 3. Những khách hàng nào (tên giao dịch) đã đặt mua mặt hàng Sữa hộp XYZ của công ty?
+SELECT DISTINCT TENGIAODICH
+FROM MATHANG 
+INNER JOIN CHITIETDATHANG ON MATHANG.MAHANG=CHITIETDATHANG.MAHANG
+INNER JOIN DONDATHANG ON CHITIETDATHANG.SOHOADON=DONDATHANG.SOHOADON
+INNER JOIN KHACHHANG ON DONDATHANG.MAKHACHHANG=KHACHHANG.MAKHACHHANG
+WHERE TENHANG = N'Sữa hộp XYZ'
+
+-- 4. Những đơn đặt hàng nào yêu cầu giao hàng ngay tại công ty đặt hàng và những đơn đó là của công ty nào?
+SELECT SOHOADON, TENCONGTY, TENGIAODICH, NGAYDATHANG, NOIGIAOHANG
+FROM DONDATHANG 
+INNER JOIN KHACHHANG ON DONDATHANG.NOIGIAOHANG=KHACHHANG.SONHATENDUONG
+
+-- 5. Tổng số tiền mà khách hàng phải trả cho mỗi đơn đặt hàng là bao nhiêu?
+SELECT DONDATHANG.SOHOADON, DONDATHANG.MAKHACHHANG, TENCONGTY, TENGIAODICH, SUM(SOLUONG*GIABAN-SOLUONG*GIABAN*MUCGIAMGIA/100) as TONGTIEN
+FROM KHACHHANG 
+INNER JOIN DONDATHANG ON KHACHHANG.MAKHACHHANG=DONDATHANG.MAKHACHHANG
+INNER JOIN CHITIETDATHANG ON DONDATHANG.SOHOADON=CHITIETDATHANG.SOHOADON
+GROUP BY DONDATHANG.MAKHACHHANG, TENCONGTY, TENGIAODICH, DONDATHANG.SOHOADON
+
+-- 6. Hãy cho biết tổng số tiền lời mà công ty thu  được từ mỗi mặt hàng trong năm 2022.
+SELECT C.MAHANG, TENHANG, SUM(B.SOLUONG*GIABAN-B.SOLUONG*GIABAN*MUCGIAMGIA/100)-SUM(B.SOLUONG*GIAHANG) as TONGTIENLOI
+FROM DONDATHANG AS A 
+INNER JOIN CHITIETDATHANG AS B ON A.SOHOADON=B.SOHOADON
+INNER JOIN MATHANG AS C ON B.MAHANG=C.MAHANG
+WHERE YEAR(NGAYDATHANG) = 2022
+GROUP BY C.MAHANG, TENHANG
+
+                   ---------------------------------BT TUẦN 10--------------------------------------
+
+-- 1. Mã hàng, tên hàng và số lượng hàng hiện có của mỗi công ty
+	SELECT MH.MAHANG, (MH.SOLUONG - SUM(CTDH.SOLUONG)) AS "Số lượng hàng hiện có"
+	FROM MATHANG AS MH JOIN CHITIETDATHANG AS CTDH ON CTDH.MAHANG = MH.MAHANG
+	GROUP BY MH.MAHANG, MH.SOLUONG
+
+-- 2. Mỗi mặt hàng trong công ty do ai cung cấp
+	SELECT MAHANG, TENHANG, TENCONGTY
+	FROM NHACUNGCAP AS NCC JOIN MATHANG AS MH ON NCC.MACONGTY = MH.MACONGTY
+
+-- 3. Số tiền lương mà mỗi công ty phải trả cho nhân viên
+	-- Cách 1
+		UPDATE NHANVIEN
+		SET PHUCAP = 0
+		WHERE PHUCAP IS NULL
+		SELECT MANHANVIEN, HO, TEN, (LUONGCOBAN + PHUCAP) AS "Tiền lương"
+		FROM  NHANVIEN
+	-- Cách 2
+		select manhanvien, ho, ten, luongcoban+case
+		when phucap is null then 0
+		else phucap
+		end as Tongluong
+		from nhanvien
+
+-- 4. Những mặt hàng nào chưa được khách hàng đặt mua
+	SELECT *
+	FROM MATHANG
+	WHERE MAHANG IN (SELECT MAHANG
+	FROM MATHANG AS MH
+	EXCEPT
+	SELECT MAHANG
+	FROM CHITIETDATHANG AS CTDH)
+
+-- 5. Hãy cho biết mỗi khách hàng đã phải bỏ ra bao nhiêu tiền để đặt mua hàng của công ty
+	SELECT KH.MAKHACHHANG, TENCONGTY, SUM(CTDH.GIABAN * SOLUONG * ((100 - MUCGIAMGIA)/100)) AS "Tổng tiền hàng"
+	FROM KHACHHANG AS KH JOIN DONDATHANG AS DDH ON KH.MAKHACHHANG = DDH.MAKHACHHANG
+						 JOIN CHITIETDATHANG AS CTDH ON DDH.SOHOADON = CTDH.SOHOADON
+	GROUP BY KH.MAKHACHHANG,TENCONGTY
